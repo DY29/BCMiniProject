@@ -1,38 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>옴맴매 한남충 킬러</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">옴맴매 한남충 킬러</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
 
-        {% for post in posts%}
-            <div>
-                <p> published : {{ post.published_date}}</p>
-                <h1><a href=""> {{ post.title }}</a></h1>
-                <p> {{post.text|linebreaksbr }}</p>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                <p>published: {{ post.published_date }}</p>
             </div>
-        {% endfor %}
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">자집애새끼들</a></h2>
-            <p>좆같은 웜년들 똑똑한줄 알았더니 우파 선동질에 홀랑 넘어가는 개돼지들 뿐</p>
-            <p>그렇게 넘어가지 말라고 해도 보수틀딱들한테 선동당해서 시위먹버당하고 </p>
-            <p>좆같은 년들 뭔 말을 해도 처 들을 생각은 안하고 지들 머리로 생각도 안하고  </p>
-            <p> 누
-                +가 그냥 강한 어조로 말했다 싶으면 어어~ 하고 넘어가고</p>
-            <p> 지금 진보 - 보수틀딱 - 웹하드 카르텔이 여성 랟펨 화력 분산시켜려고 개지랄 떨고 있는건데</p>
-            <p> 소쌍이니 뭐니 개지랄 염병 병신새끼들</p>
-
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">다 칼푹찍 해버려</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </div>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
